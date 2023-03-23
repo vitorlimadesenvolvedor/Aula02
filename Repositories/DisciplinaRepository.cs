@@ -1,4 +1,7 @@
+using System.Globalization;
+using System.Text;
 using Aula02.Controllers;
+using Aula02.Dtos;
 using Aula02.Models;
 
 namespace Aula02.Repositories;
@@ -15,30 +18,75 @@ public class DisciplinaRepository
 
     public List<Disciplina> ListarDisciplinas(string filtroNome)
     {
+
         if (string.IsNullOrEmpty(filtroNome))
             return lista;
         else
-           return lista.Where(x => x.Nome.Contains(filtroNome)).ToList();    
+            return lista.Where(z => z.Nome.ToLower().RemoverAcentos().Contains(filtroNome.ToLower().RemoverAcentos()))
+            .OrderBy(x => x.Id)
+            .ToList();
     }
 
-    public Disciplina ObterDisciplina(int id)
+    public Disciplina? ObterDisciplina(int id)
     {
         return lista.FirstOrDefault(x => x.Id == id);
     }
 
-    public Disciplina AtualizarCargaHoraria(int id, DisciplinaDto dto){
-      
-      var disciplina = ObterDisciplina(id);
-      lista.Remove(disciplina);
+    public Disciplina AtualizarDisciplina(int id, DisciplinaDto dto)
+    {
 
-      disciplina.CargaHoraria = dto.CargaHoraria;
-      disciplina.Nome = dto.Nome;
+        var disciplina = ObterDisciplina(id);
+        lista.Remove(disciplina);
 
-      lista.Add(disciplina);
-      
-      return disciplina;
+        disciplina.CargaHoraria = dto.CargaHoraria;
+        disciplina.Nome = dto.Nome;
+        disciplina.DataDaAlteracao = DateTime.Now;
+
+        lista.Add(disciplina);
+
+        return disciplina;
     }
 
-    // Cria método para Criar uma nova disciplina
+    public Disciplina CriarDisciplina(DisciplinaDto dto)
+    {
 
+        var disciplina = new Disciplina();
+        disciplina.Id = GerarId();
+        disciplina.CargaHoraria = dto.CargaHoraria;
+        disciplina.Nome = dto.Nome;
+        disciplina.DataDaInclusao = DateTime.Now;
+
+        lista.Add(disciplina);
+
+        return disciplina;
+    }
+
+    public void ExcluirDisciplina(int id)
+    {
+        var disciplina = lista.FirstOrDefault(a => a.Id == id);
+
+        if (disciplina != null)
+            lista.Remove(disciplina);
+    }
+
+    private int GerarId()
+    {
+        return lista.Last().Id + 1;
+    }
+
+}
+
+public static class StringExtension
+{
+    public static string RemoverAcentos(this string text)
+    {
+        StringBuilder sbReturn = new StringBuilder();
+        var arrayText = text.Normalize(NormalizationForm.FormD).ToCharArray();
+        foreach (char letter in arrayText)
+        {
+            if (CharUnicodeInfo.GetUnicodeCategory(letter) != UnicodeCategory.NonSpacingMark)
+                sbReturn.Append(letter);
+        }
+        return sbReturn.ToString();
+    }
 }

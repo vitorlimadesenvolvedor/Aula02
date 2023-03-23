@@ -1,3 +1,4 @@
+using Aula02.Dtos;
 using Aula02.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,9 +8,8 @@ namespace Aula02.Controllers;
 [Route("[controller]")]
 public class DisciplinaController : ControllerBase
 {
-
+    
     [HttpGet]
-    [Route("listar")]
     public IActionResult Listar(string? nome)
     {
         var repository = new DisciplinaRepository();
@@ -34,21 +34,32 @@ public class DisciplinaController : ControllerBase
 
         return Ok(disciplina);
     }
+    
+    [HttpPost]
+    public IActionResult Criar([FromBody] DisciplinaDto dto){
+       
+       var repository = new DisciplinaRepository();
+       var disciplina = repository.CriarDisciplina(dto);
+       return CreatedAtAction(nameof(DisciplinaController.Obter),  new { id = disciplina.Id }, disciplina);
+    }
 
-    [HttpPut]
+    [HttpPatch]
     [Route("{id}")]
     public IActionResult Atualizar(int id, [FromBody] DisciplinaDto dto)
     {
         var repository = new DisciplinaRepository();
-        var disciplina = repository.AtualizarCargaHoraria(id, dto);
+        var disciplina = repository.AtualizarDisciplina(id, dto);
         return Ok(disciplina);
     }
 
-    // Criar endpoint para criar disciplina
+    [HttpDelete]
+    [Route("{id}")]
+    public IActionResult Excluir(int id){
+       
+       var repository = new DisciplinaRepository();
+       repository.ExcluirDisciplina(id);
 
-}
+       return NoContent();
+    }
 
-public class DisciplinaDto{
-    public int CargaHoraria { get; set; }
-    public string Nome { get; set; }
 }
