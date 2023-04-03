@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "2fiFmDeAhJ19cZDG2EBBU5W3MkQ8/0RSysdgkpQDRAz9k6WITM3nJ8+cJeCqTiW1Is1hxR6ivqbCjbbSBmQ+aw==",
+  "dgSpecHash": "d8v8rb2jgwAkhzWVGBOQ9/qTf6K48TrZn7eLH5Sb7f785OkI7hP7OfIaLHbioI9vIjODg17t1U6v54RwQfaZtg==",
   "success": true,
   "projectFilePath": "C:\\Users\\vitor.lima\\Projetos\\DevInHouse\\Aula02\\Aula02.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vitor.lima\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\vitor.lima\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\vitor.lima\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\vitor.lima\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\vitor.lima\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\vitor.lima\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

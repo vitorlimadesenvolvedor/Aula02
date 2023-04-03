@@ -25,3 +25,7 @@ C:\Users\vitor.lima\Projetos\DevInHouse\Aula02\obj\Debug\net6.0\refint\Aula02.dl
 C:\Users\vitor.lima\Projetos\DevInHouse\Aula02\obj\Debug\net6.0\Aula02.pdb
 C:\Users\vitor.lima\Projetos\DevInHouse\Aula02\obj\Debug\net6.0\Aula02.genruntimeconfig.cache
 C:\Users\vitor.lima\Projetos\DevInHouse\Aula02\obj\Debug\net6.0\ref\Aula02.dll
+C:\Users\vitor.lima\Projetos\DevInHouse\Aula02\bin\Debug\net6.0\appsettings.Development.Oracle.json
+C:\Users\vitor.lima\Projetos\DevInHouse\Aula02\bin\Debug\net6.0\appsettings.Development.PGSql.json
+C:\Users\vitor.lima\Projetos\DevInHouse\Aula02\bin\Debug\net6.0\appsettings.Development.SqlServer.json
+C:\Users\vitor.lima\Projetos\DevInHouse\Aula02\bin\Debug\net6.0\Newtonsoft.Json.dll

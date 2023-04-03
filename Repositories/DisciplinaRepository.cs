@@ -16,7 +16,7 @@ public class DisciplinaRepository
        new Disciplina { Id = 4, CargaHoraria = 20, Nome = "Matemática" }
     };
 
-    public List<Disciplina> ListarDisciplinas(string filtroNome)
+    public List<Disciplina> ListarDisciplinas(string? filtroNome)
     {
 
         if (string.IsNullOrEmpty(filtroNome))
@@ -40,7 +40,7 @@ public class DisciplinaRepository
 
         disciplina.CargaHoraria = dto.CargaHoraria;
         disciplina.Nome = dto.Nome;
-        disciplina.DataDaAlteracao = DateTime.Now;
+        disciplina.DataDeAlteracao = DateTime.Now;
 
         lista.Add(disciplina);
 
@@ -54,7 +54,7 @@ public class DisciplinaRepository
         disciplina.Id = GerarId();
         disciplina.CargaHoraria = dto.CargaHoraria;
         disciplina.Nome = dto.Nome;
-        disciplina.DataDaInclusao = DateTime.Now;
+        disciplina.DataDeInclusao = DateTime.Now;
 
         lista.Add(disciplina);
 

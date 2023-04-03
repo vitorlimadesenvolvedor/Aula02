@@ -8,19 +8,19 @@ namespace Aula02.Controllers;
 [Route("[controller]")]
 public class DisciplinaController : ControllerBase
 {
-    
+
     [HttpGet]
-    public IActionResult Listar(string? nome)
+    public IActionResult Listar([FromQuery] string? nome)
     {
         var repository = new DisciplinaRepository();
         var disciplinas = repository.ListarDisciplinas(nome);
-
+        
         return Ok(disciplinas);
     }
 
     [HttpGet]
     [Route("{id}")]
-    public IActionResult Obter(int id)
+    public IActionResult Obter([FromRoute] int id)
     {
 
         if (id <= 0)
@@ -34,18 +34,19 @@ public class DisciplinaController : ControllerBase
 
         return Ok(disciplina);
     }
-    
+
     [HttpPost]
-    public IActionResult Criar([FromBody] DisciplinaDto dto){
-       
-       var repository = new DisciplinaRepository();
-       var disciplina = repository.CriarDisciplina(dto);
-       return CreatedAtAction(nameof(DisciplinaController.Obter),  new { id = disciplina.Id }, disciplina);
+    public IActionResult Criar([FromBody] DisciplinaDto dto)
+    {
+
+        var repository = new DisciplinaRepository();
+        var disciplina = repository.CriarDisciplina(dto);
+        return CreatedAtAction(nameof(DisciplinaController.Obter), new { id = disciplina.Id }, disciplina);
     }
 
     [HttpPatch]
     [Route("{id}")]
-    public IActionResult Atualizar(int id, [FromBody] DisciplinaDto dto)
+    public IActionResult Atualizar(int id, [FromForm] DisciplinaDto dto)
     {
         var repository = new DisciplinaRepository();
         var disciplina = repository.AtualizarDisciplina(id, dto);
@@ -54,12 +55,14 @@ public class DisciplinaController : ControllerBase
 
     [HttpDelete]
     [Route("{id}")]
-    public IActionResult Excluir(int id){
-       
-       var repository = new DisciplinaRepository();
-       repository.ExcluirDisciplina(id);
+    public IActionResult Excluir(int id)
+    {
 
-       return NoContent();
+        var repository = new DisciplinaRepository();
+        repository.ExcluirDisciplina(id);
+
+        return NoContent();
     }
+
 
 }
